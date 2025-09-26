@@ -5,40 +5,41 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { LogOut, Wifi, WifiOff } from 'lucide-react';
-
 interface LayoutProps {
   children: React.ReactNode;
 }
-
-export const Layout = ({ children }: LayoutProps) => {
-  const { user, signOut } = useAuth();
-  const { language, setLanguage, t } = useLanguage();
-  const { isOnline, pendingData } = useOffline();
-
+export const Layout = ({
+  children
+}: LayoutProps) => {
+  const {
+    user,
+    signOut
+  } = useAuth();
+  const {
+    language,
+    setLanguage,
+    t
+  } = useLanguage();
+  const {
+    isOnline,
+    pendingData
+  } = useOffline();
   const pendingCount = pendingData.diseaseReports.length + pendingData.queries.length;
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="bg-primary text-primary-foreground p-4 shadow-lg">
         <div className="max-w-md mx-auto flex items-center justify-between">
-          <h1 className="text-xl font-bold">FarmSaathi</h1>
+          <h1 className="text-xl font-bold">Fasal-Pashu Saathi</h1>
           
           <div className="flex items-center gap-2">
             {/* Offline indicator */}
             <div className="flex items-center gap-1">
-              {isOnline ? (
-                <Wifi className="h-4 w-4 text-green-400" />
-              ) : (
-                <div className="flex items-center gap-1">
+              {isOnline ? <Wifi className="h-4 w-4 text-green-400" /> : <div className="flex items-center gap-1">
                   <WifiOff className="h-4 w-4 text-red-400" />
-                  {pendingCount > 0 && (
-                    <Badge variant="destructive" className="text-xs">
+                  {pendingCount > 0 && <Badge variant="destructive" className="text-xs">
                       {pendingCount}
-                    </Badge>
-                  )}
-                </div>
-              )}
+                    </Badge>}
+                </div>}
             </div>
 
             {/* Language selector */}
@@ -54,31 +55,21 @@ export const Layout = ({ children }: LayoutProps) => {
             </Select>
 
             {/* Logout */}
-            {user && (
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                onClick={signOut}
-                className="text-primary-foreground hover:bg-primary-foreground/20"
-              >
+            {user && <Button variant="ghost" size="sm" onClick={signOut} className="text-primary-foreground hover:bg-primary-foreground/20">
                 <LogOut className="h-4 w-4" />
-              </Button>
-            )}
+              </Button>}
           </div>
         </div>
       </header>
 
       {/* Offline notification */}
-      {!isOnline && (
-        <div className="bg-yellow-500 text-yellow-900 p-2 text-center text-sm">
+      {!isOnline && <div className="bg-yellow-500 text-yellow-900 p-2 text-center text-sm">
           {t('offlineMode')} - {t('dataWillSync')}
-        </div>
-      )}
+        </div>}
 
       {/* Main content */}
       <main className="max-w-md mx-auto">
         {children}
       </main>
-    </div>
-  );
+    </div>;
 };
