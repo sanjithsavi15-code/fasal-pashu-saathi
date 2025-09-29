@@ -4,8 +4,12 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { useAuth } from '@/hooks/useAuth';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { EditReportDialog } from '@/components/EditReportDialog';
 import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 import { format } from 'date-fns';
+import { Edit, Trash2, Phone } from 'lucide-react';
 
 interface AnimalReport {
   id: string;
@@ -36,9 +40,11 @@ export const MyReports = () => {
   const [animalReports, setAnimalReports] = useState<AnimalReport[]>([]);
   const [cropReports, setCropReports] = useState<CropReport[]>([]);
   const [loading, setLoading] = useState(true);
+  const [editingReport, setEditingReport] = useState<any>(null);
   
   const { t } = useLanguage();
   const { user } = useAuth();
+  const { toast } = useToast();
 
   useEffect(() => {
     if (user) {
@@ -87,6 +93,40 @@ export const MyReports = () => {
     }
   };
 
+  const handleDelete = async (report: any) => {
+    if (!confirm('Are you sure you want to delete this report?')) return;
+    
+    try {
+      const table = 'ear_tag' in report ? 'report_diseases' : 'report_crops';
+      const { error } = await supabase
+        .from(table)
+        .delete()
+        .eq('id', report.id);
+
+      if (error) throw error;
+
+      toast({
+        title: "Success",
+        description: "Report deleted successfully"
+      });
+      
+      fetchReports();
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleContactExpert = () => {
+    toast({
+      title: "Contact Expert",
+      description: "Feature coming soon! You'll be able to contact nearest experts for advice."
+    });
+  };
+
   if (loading) {
     return (
       <Layout>
@@ -123,9 +163,34 @@ export const MyReports = () => {
                     <CardTitle className="text-lg">
                       {isAnimal ? `Animal Report - ${(report as AnimalReport).ear_tag}` : `Crop Report - ${(report as CropReport).crops?.name}`}
                     </CardTitle>
-                    <Badge variant={isAnimal ? 'default' : 'secondary'}>
-                      {isAnimal ? 'Animal' : 'Crop'}
-                    </Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge variant={isAnimal ? 'default' : 'secondary'}>
+                        {isAnimal ? 'Animal' : 'Crop'}
+                      </Badge>
+                      <div className="flex gap-1">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setEditingReport(report)}
+                        >
+                          <Edit className="h-3 w-3" />
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleDelete(report)}
+                        >
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={handleContactExpert}
+                        >
+                          <Phone className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-2">
@@ -171,6 +236,13 @@ export const MyReports = () => {
             );
           })
         )}
+        
+        <EditReportDialog
+          report={editingReport}
+          isOpen={!!editingReport}
+          onClose={() => setEditingReport(null)}
+          onUpdate={fetchReports}
+        />
       </div>
     </Layout>
   );

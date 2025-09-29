@@ -121,6 +121,39 @@ export type Database = {
         }
         Relationships: []
       }
+      farmer_queries: {
+        Row: {
+          admin_response: string | null
+          created_at: string
+          id: string
+          message: string
+          status: string | null
+          subject: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_response?: string | null
+          created_at?: string
+          id?: string
+          message: string
+          status?: string | null
+          subject: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_response?: string | null
+          created_at?: string
+          id?: string
+          message?: string
+          status?: string | null
+          subject?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       location_symptoms: {
         Row: {
           disease_id: number | null
@@ -197,6 +230,36 @@ export type Database = {
           dosage?: string
           id?: number
           name?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          id: string
+          is_admin: boolean | null
+          name: string | null
+          phone_number: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_admin?: boolean | null
+          name?: string | null
+          phone_number?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_admin?: boolean | null
+          name?: string | null
+          phone_number?: string | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }

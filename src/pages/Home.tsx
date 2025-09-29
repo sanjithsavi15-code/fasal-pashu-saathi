@@ -35,7 +35,7 @@ export const Home = () => {
   };
   const fetchUserStats = async () => {
     if (!user) return;
-    const [reportsRes, queriesRes] = await Promise.all([supabase.from('disease_reports').select('id').eq('user_id', user.id), supabase.from('farmer_queries').select('id').eq('user_id', user.id)]);
+    const [reportsRes, queriesRes] = await Promise.all([supabase.from('report_diseases').select('id').eq('user_id', user.id), supabase.from('farmer_queries').select('id').eq('user_id', user.id)]);
     setStats({
       reports: reportsRes.data?.length || 0,
       queries: queriesRes.data?.length || 0

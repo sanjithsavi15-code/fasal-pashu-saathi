@@ -25,16 +25,16 @@ export const Dashboard = () => {
     try {
       // Fetch reports stats
       const { data: reports } = await supabase
-        .from('disease_reports')
-        .select('status');
+        .from('report_diseases')
+        .select('*');
       
       const { data: queries } = await supabase
         .from('farmer_queries')
-        .select('status');
+        .select('*');
 
       // Fetch recent reports
       const { data: recentReportsData } = await supabase
-        .from('disease_reports')
+        .from('report_diseases')
         .select('*, profiles(name)')
         .order('created_at', { ascending: false })
         .limit(5);
@@ -48,7 +48,7 @@ export const Dashboard = () => {
 
       setStats({
         totalReports: reports?.length || 0,
-        pendingReports: reports?.filter(r => r.status === 'pending').length || 0,
+        pendingReports: 0, // Remove status filtering since no status field
         totalQueries: queries?.length || 0,
         openQueries: queries?.filter(q => q.status === 'open').length || 0
       });

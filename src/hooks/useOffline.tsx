@@ -74,7 +74,7 @@ export const useOffline = () => {
       // Sync disease reports
       for (const report of pendingData.diseaseReports) {
         const { offline, id, ...reportData } = report;
-        await supabase.from('disease_reports').insert(reportData);
+        await supabase.from('report_diseases').insert(reportData);
       }
 
       // Sync queries
