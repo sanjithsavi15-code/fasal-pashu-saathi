@@ -232,7 +232,11 @@ export const ReportDisease = () => {
         symptomIds: [],
         customSymptom: ''
       });
-      setDiseaseInfo(null);
+      
+      // Keep disease info visible for a few seconds after submission
+      setTimeout(() => {
+        setDiseaseInfo(null);
+      }, 5000);
       
     } catch (error: any) {
       toast({
