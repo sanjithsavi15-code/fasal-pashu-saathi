@@ -22,7 +22,7 @@ export const EditReportDialog = ({ report, isOpen, onClose, onUpdate }: EditRepo
   const [crops, setCrops] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const isAnimal = report && 'ear_tag' in report;
+  const isAnimal = !!(report && typeof report === 'object' && Object.prototype.hasOwnProperty.call(report, 'ear_tag'));
 
   useEffect(() => {
     if (isOpen && report) {

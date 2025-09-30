@@ -97,7 +97,7 @@ export const MyReports = () => {
     if (!confirm('Are you sure you want to delete this report?')) return;
     
     try {
-      const table = 'ear_tag' in report ? 'report_diseases' : 'report_crops';
+      const table = (report && typeof report === 'object' && Object.prototype.hasOwnProperty.call(report, 'ear_tag')) ? 'report_diseases' : 'report_crops';
       const { error } = await supabase
         .from(table)
         .delete()
@@ -155,7 +155,7 @@ export const MyReports = () => {
           </Card>
         ) : (
           allReports.map((report) => {
-            const isAnimal = report && 'ear_tag' in report;
+            const isAnimal = !!(report && typeof report === 'object' && Object.prototype.hasOwnProperty.call(report, 'ear_tag'));
             return (
               <Card key={report.id}>
                 <CardHeader className="pb-3">
