@@ -58,7 +58,7 @@ const translations = {
     
     // Information
     appInstructions: 'App Instructions',
-    certificationInfo: 'Certification & MRL Compliance',
+    certificationInfo: 'MRL Compliance',
     amuGuidelines: 'AMU Guidelines',
     
     // Offline
@@ -116,7 +116,7 @@ const translations = {
     
     // Information
     appInstructions: 'ऐप निर्देश',
-    certificationInfo: 'प्रमाणन और एमआरएल अनुपालन',
+    certificationInfo: 'एमआरएल अनुपालन',
     amuGuidelines: 'एएमयू दिशानिर्देश',
     
     // Offline
@@ -174,7 +174,7 @@ const translations = {
     
     // Information
     appInstructions: 'ಅಪ್ಲಿಕೇಶನ್ ಸೂಚನೆಗಳು',
-    certificationInfo: 'ಪ್ರಮಾಣೀಕರಣ ಮತ್ತು ಎಂಆರ್‌ಎಲ್ ಅನುಸರಣೆ',
+    certificationInfo: 'ಎಂಆರ್‌ಎಲ್ ಅನುಸರಣೆ',
     amuGuidelines: 'ಎಎಂಯು ಮಾರ್ಗದರ್ಶನಗಳು',
     
     // Offline
