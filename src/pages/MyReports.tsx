@@ -155,7 +155,7 @@ export const MyReports = () => {
           </Card>
         ) : (
           allReports.map((report) => {
-            const isAnimal = 'ear_tag' in report;
+            const isAnimal = report && 'ear_tag' in report;
             return (
               <Card key={report.id}>
                 <CardHeader className="pb-3">

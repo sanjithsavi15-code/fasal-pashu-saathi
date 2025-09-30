@@ -22,7 +22,7 @@ export const EditReportDialog = ({ report, isOpen, onClose, onUpdate }: EditRepo
   const [crops, setCrops] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const isAnimal = 'ear_tag' in report;
+  const isAnimal = report && 'ear_tag' in report;
 
   useEffect(() => {
     if (isOpen && report) {
