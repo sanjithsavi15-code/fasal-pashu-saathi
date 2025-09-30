@@ -144,13 +144,13 @@ export const MyReports = () => {
   return (
     <Layout>
       <div className="p-4 pb-20 space-y-4">
-        <h1 className="text-xl font-bold text-center">My Reports</h1>
+        <h1 className="text-xl font-bold text-center">{t('myReports')}</h1>
         
         {allReports.length === 0 ? (
           <Card>
             <CardContent className="p-6 text-center">
-              <p className="text-muted-foreground">No reports submitted yet</p>
-              <p className="text-sm text-muted-foreground mt-1">Submit your first disease report to see it here!</p>
+              <p className="text-muted-foreground">{t('noReportsYet')}</p>
+              <p className="text-sm text-muted-foreground mt-1">{t('submitFirstReport')}</p>
             </CardContent>
           </Card>
         ) : (

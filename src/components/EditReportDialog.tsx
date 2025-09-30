@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface EditReportDialogProps {
   report: any;
@@ -17,6 +18,7 @@ interface EditReportDialogProps {
 
 export const EditReportDialog = ({ report, isOpen, onClose, onUpdate }: EditReportDialogProps) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<any>({});
   const [locations, setLocations] = useState<any[]>([]);
   const [crops, setCrops] = useState<any[]>([]);
@@ -83,18 +85,18 @@ export const EditReportDialog = ({ report, isOpen, onClose, onUpdate }: EditRepo
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>Edit {isAnimal ? 'Animal' : 'Crop'} Report</DialogTitle>
+          <DialogTitle>{t('editReportTitle')} {isAnimal ? t('animal') : t('crop')}</DialogTitle>
         </DialogHeader>
         
         <div className="space-y-4">
           <div>
-            <Label htmlFor="location">Location</Label>
+            <Label htmlFor="location">{t('location')}</Label>
             <Select
               value={formData.location_id?.toString()}
               onValueChange={(value) => setFormData({...formData, location_id: parseInt(value)})}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select location" />
+                <SelectValue placeholder={t('selectLocation')} />
               </SelectTrigger>
               <SelectContent>
                 {locations.map((location) => (
@@ -108,7 +110,7 @@ export const EditReportDialog = ({ report, isOpen, onClose, onUpdate }: EditRepo
 
           {isAnimal ? (
             <div>
-              <Label htmlFor="ear_tag">Ear Tag</Label>
+              <Label htmlFor="ear_tag">{t('earTag')}</Label>
               <Input
                 id="ear_tag"
                 value={formData.ear_tag || ''}
@@ -118,13 +120,13 @@ export const EditReportDialog = ({ report, isOpen, onClose, onUpdate }: EditRepo
           ) : (
             <>
               <div>
-                <Label htmlFor="crop">Crop</Label>
+                <Label htmlFor="crop">{t('crop')}</Label>
                 <Select
                   value={formData.crop_id?.toString()}
                   onValueChange={(value) => setFormData({...formData, crop_id: parseInt(value)})}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select crop" />
+                    <SelectValue placeholder={t('selectCrop')} />
                   </SelectTrigger>
                   <SelectContent>
                     {crops.map((crop) => (
@@ -137,7 +139,7 @@ export const EditReportDialog = ({ report, isOpen, onClose, onUpdate }: EditRepo
               </div>
               
               <div>
-                <Label htmlFor="crop_age">Crop Age (days)</Label>
+                <Label htmlFor="crop_age">{t('cropAgeDays')}</Label>
                 <Input
                   id="crop_age"
                   type="number"
@@ -147,7 +149,7 @@ export const EditReportDialog = ({ report, isOpen, onClose, onUpdate }: EditRepo
               </div>
               
               <div>
-                <Label htmlFor="symptom">Symptoms</Label>
+                <Label htmlFor="symptom">{t('symptoms')}</Label>
                 <Textarea
                   id="symptom"
                   value={formData.symptom || ''}
@@ -161,10 +163,10 @@ export const EditReportDialog = ({ report, isOpen, onClose, onUpdate }: EditRepo
         
         <div className="flex gap-2 pt-4">
           <Button variant="outline" onClick={onClose} className="flex-1">
-            Cancel
+            {t('cancel')}
           </Button>
           <Button onClick={handleSave} disabled={loading} className="flex-1">
-            Save Changes
+            {t('saveChanges')}
           </Button>
         </div>
       </DialogContent>

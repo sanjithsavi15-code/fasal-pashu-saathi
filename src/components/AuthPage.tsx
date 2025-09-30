@@ -67,7 +67,7 @@ export const AuthPage = () => {
   return <div className="min-h-screen bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold text-primary">Fasal-Pashu Saathi</CardTitle>
+          <CardTitle className="text-2xl font-bold text-primary">{t('appTitle')}</CardTitle>
           <p className="text-muted-foreground">
             {t('enterPhone')}
           </p>
