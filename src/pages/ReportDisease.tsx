@@ -313,7 +313,7 @@ export const ReportDisease = () => {
                   <div className="space-y-2">
                     <Label>Symptoms *</Label>
                     <div className="grid grid-cols-2 gap-2">
-                      {symptoms.map((symptom) => (
+                      {symptoms.slice(0, -6).map((symptom) => (
                         <div key={symptom.id} className="flex items-center space-x-2">
                           <Checkbox
                             id={`symptom-${symptom.id}`}
