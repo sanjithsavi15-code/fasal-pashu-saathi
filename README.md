@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
+Here is a clean, professional README you can copy directly into your repository. It highlights your technical stack, your leadership role, and the core features you built for the hackathon.
 
-## Project info
+```markdown
+# Fasal Pashu Sathi 🌾🐄
 
-**URL**: https://lovable.dev/projects/a7b6156e-1e90-40f4-9c95-492a36f9521a
+A comprehensive full-stack digital portal designed to empower farmers with intuitive management tools for both crop cycles and livestock health. Developed as a college hackathon initiative to bridge the gap between agriculture and modern data management.
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+*   **Unified Dashboard:** Monitor crop health metrics and livestock statistics from a single, centralized interface.
+*   **Crop Management:** Log and track planting cycles, harvest timelines, and soil metrics.
+*   **Livestock Tracking:** Maintain detailed records of livestock health, feeding schedules, and active inventory.
+*   **Responsive UI:** Fully responsive design built with Tailwind CSS, ensuring accessibility across mobile devices and desktop environments.
 
-**Use Lovable**
+## 💻 Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a7b6156e-1e90-40f4-9c95-492a36f9521a) and start prompting.
+*   **Frontend:** React, Next.js, TypeScript, Tailwind CSS
+*   **Backend:** Next.js API Routes 
+*   **Database:** PostgreSQL
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Installation & Setup
 
-**Use your preferred IDE**
+1. **Clone the repository:**
+```bash
+   git clone [https://github.com/your-username/fasal-pashu-sathi.git](https://github.com/your-username/fasal-pashu-sathi.git)
+   cd fasal-pashu-sathi
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
 ```
 
-**Edit a file directly in GitHub**
+2. **Install dependencies:**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+   npm install
 
-**Use GitHub Codespaces**
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. **Configure Environment Variables:**
+Create a `.env.local` file in the root directory and add your database connection string:
 
-## What technologies are used for this project?
+```env
+   DATABASE_URL="postgresql://user:password@localhost:5432/fasal_pashu_sathi"
 
-This project is built with:
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+4. **Run the development server:**
 
-## How can I deploy this project?
+```bash
+   npm run dev
 
-Simply open [Lovable](https://lovable.dev/projects/a7b6156e-1e90-40f4-9c95-492a36f9521a) and click on Share -> Publish.
+```
 
-## Can I connect a custom domain to my Lovable project?
+Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) with your browser to view the application.
 
-Yes, you can!
+## 👨‍💻 Team
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+* **Sanjith P** – Team Lead & Full-Stack Developer
+* **Varsha D** – Backend and ui designing
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📄 License
+
+This project is licensed under the MIT License.
+
+```
+
+```
