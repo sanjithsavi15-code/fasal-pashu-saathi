@@ -1,4 +1,3 @@
-Here is a clean, professional README you can copy directly into your repository. It highlights your technical stack, your leadership role, and the core features you built for the hackathon.
 
 ```markdown
 # Fasal Pashu Sathi 🌾🐄
